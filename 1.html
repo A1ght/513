@@ -1,0 +1,320 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luca's Loaves</title>
+        <link rel="stylesheet" href="513.css">
+        <script>
+            window.onload = function() {
+                alert("You haven't logged in yet, please log in first.");
+                window.location.href = "login.php"; 
+            };
+        </script>
+    </head>
+    <body class="order-page">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luca's Loaves</title>
+    <link rel="stylesheet" href="513.css">
+</head>
+<body class="order-page">
+<header>
+    <nav>
+        <img src="logo.png" alt="Luca's Loaves Logo" id="logo">
+        <span class="nav-title">This is Luca's Loaves！ Welcome！</span>
+        <div class="nav-container">
+            <div class="nav-buttons">
+                <a href="index.php" class="nav-button">Home</a>
+                <a href="about.php" class="nav-button">About us</a>
+                <a href="careers.php" class="nav-button">Careers</a>
+                <a href="order.php" class="nav-button" onclick="return checkRoleAndGoOrder()">Order</a>
+                <a href="support.php" class="nav-button">Support</a>
+            </div>
+            <div class="user-info">
+                <?php if ($isLoggedIn): ?>
+                    <span><?php echo htmlspecialchars($_SESSION['customer_username']); ?> </span>
+                <?php else: ?>
+                    <a href="login.php" class="nav-button">Login</a>
+                <?php endif; ?>
+                <form action="logout.php" method="post">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+    <main>
+        <section class="product-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Picture</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                        <th>Quantity</th>
+                        <th>Order Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr data-id="1">
+    <td>Sourdough White</td>
+    <td>$7.00</td>
+    <td><img src="1.png" alt="Sourdough White" style="width:50px;"></td>
+    <td>Our standard sourdough</td>
+    <td><button class="add-to-cart" data-price="7">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="7"></td>
+    <td id="order-time-1"></td>
+</tr>
+<tr data-id="2">
+    <td>Sourdough White</td>
+    <td>$7.00</td>
+    <td><img src="2.png" alt="Sourdough White" style="width:50px;"></td>
+    <td>Our standard sourdough</td>
+    <td><button class="add-to-cart" data-price="7">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="7"></td>
+    <td id="order-time-2"></td>
+</tr>
+<tr data-id="3">
+    <td>Sourdough White</td>
+    <td>$7.00</td>
+    <td><img src="3.png" alt="Sourdough White" style="width:50px;"></td>
+    <td>Our standard sourdough</td>
+    <td><button class="add-to-cart" data-price="7">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="7"></td>
+    <td id="order-time-1"></td>
+</tr>
+<tr data-id="4">
+    <td>Sourdough White</td>
+    <td>$7.00</td>
+    <td><img src="4.png" alt="Sourdough White" style="width:50px;"></td>
+    <td>Our standard sourdough</td>
+    <td><button class="add-to-cart" data-price="7">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="7"></td>
+    <td id="order-time-2"></td>
+</tr>
+<tr data-id="5">
+    <td>Sourdough White</td>
+    <td>$7.00</td>
+    <td><img src="5.png" alt="Sourdough White" style="width:50px;"></td>
+    <td>Our standard sourdough</td>
+    <td><button class="add-to-cart" data-price="7">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="7"></td>
+    <td id="order-time-1"></td>
+</tr>
+<tr data-id="6">
+    <td>Coffee</td>
+    <td>$3.00</td>
+    <td><img src="6.png" alt="Coffee" style="width:50px;"></td>
+    <td>Freshly brewed coffee</td>
+    <td><button class="add-to-cart" data-price="3">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="3"></td>
+    <td id="order-time-6"></td>
+</tr>
+<tr data-id="7">
+    <td>Tiramisu</td>
+    <td>$5.00</td>
+    <td><img src="7.png" alt="Tiramisu" style="width:50px;"></td>
+    <td>Delicious Tiramisu dessert</td>
+    <td><button class="add-to-cart" data-price="5">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="5"></td>
+    <td id="order-time-7"></td>
+</tr>
+<tr data-id="8">
+    <td>Icecream</td>
+    <td>$4.00</td>
+    <td><img src="8.png" alt="Icecream" style="width:50px;"></td>
+    <td>Refreshing ice cream</td>
+    <td><button class="add-to-cart" data-price="4">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="4"></td>
+    <td id="order-time-8"></td>
+</tr>
+<tr data-id="9">
+    <td>Baguette</td>
+    <td>$2.50</td>
+    <td><img src="9.png" alt="Baguette" style="width:50px;"></td>
+    <td>French baguette</td>
+    <td><button class="add-to-cart" data-price="2.5">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="2.5"></td>
+    <td id="order-time-9"></td>
+</tr>
+<tr data-id="10">
+    <td>Juice</td>
+    <td>$2.00</td>
+    <td><img src="10.png" alt="Juice" style="width:50px;"></td>
+    <td>Fresh fruit juice</td>
+    <td><button class="add-to-cart" data-price="2">Add to Cart</button></td>
+    <td><input type="number" value="0" class="quantity" data-price="2"></td>
+    <td id="order-time-10"></td>
+</tr>
+                </tbody>
+            </table>
+        </section>
+        <?php if (isset($_SESSION['customer_username'])): ?>
+    <p>Welcome to the order page, <?php echo htmlspecialchars($_SESSION['customer_username']); ?>!</p>
+<?php endif; ?>
+<!-- Add All to Cart Button -->
+<div style="text-align: center; margin-top: 20px;">
+    <button id="add-all-to-cart">Add All to Cart</button>
+</div>
+    <section class="shopping-cart">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-totals">
+            Total: <span id="total-price">$0.00</span>
+        </div>
+            <button id="checkout">Check Out</button>
+            <button id="clear-cart">Clear Cart</button>
+            <form id="order-form" method="post">
+            <input type="hidden" name="cart" id="cart-data">
+            <input type="hidden" name="submit_order" value="1">
+            <button type="submit" id="submit-cart">Submit Cart</button>
+        </form>
+        </section>
+    </main>
+    <footer style="background-color: #0400ff; padding: 10px; text-align: center;">
+        <p>© 2024 Luca's Loaves. All rights reserved.</p>
+    </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    const cartItems = document.getElementById('cart-items');
+    const totalPrice = document.getElementById('total-price');
+    let cart = [];
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const price = parseFloat(this.getAttribute('data-price'));
+            const row = this.closest('tr');
+            const quantityInput = row.querySelector('.quantity');
+            const quantity = parseInt(quantityInput.value, 10); 
+            const id = row.getAttribute('data-id');
+            
+            if (quantity > 0 && !isNaN(price) && !isNaN(quantity)) { 
+                let itemIndex = cart.findIndex(item => item.id === id);
+                if (itemIndex === -1) {
+                    cart.push({ price: price, quantity: quantity, id: id });
+                } else {
+                    cart[itemIndex].quantity += quantity;
+                }
+                updateCart();
+                updateOrderTime(document.getElementById('order-time-' + id));
+            }
+        });
+    });
+
+
+    function updateCart() {
+        let total = 0;
+        cartItems.innerHTML = '';
+        cart.forEach((item, index) => {
+            const itemTotal = (item.price * item.quantity).toFixed(2);
+            total += parseFloat(itemTotal);
+            cartItems.innerHTML += `<div>${item.quantity}x ${item.price} = $${itemTotal} <button class="remove-from-cart" data-index="${index}">Remove</button></div>`;
+        });
+        totalPrice.textContent = '$' + total.toFixed(2);
+    }
+
+
+    function updateOrderTime(cell) {
+        if (cell) { 
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString();
+            cell.textContent = formattedTime;
+        }
+    }
+
+   
+    cartItems.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-from-cart')) {
+            const index = parseInt(event.target.getAttribute('data-index'), 10);
+            cart.splice(index, 1);
+            updateCart();
+        }
+    });
+
+    document.getElementById('checkout').addEventListener('click', function() {
+        alert(`Total: $${totalPrice.textContent}`);
+    });
+
+    document.getElementById('clear-cart').addEventListener('click', function() {
+        cart = [];
+        updateCart();
+    });
+
+    document.getElementById('add-all-to-cart').addEventListener('click', function() {
+        const rows = document.querySelectorAll('table tbody tr');
+        rows.forEach(row => {
+            const quantityInput = row.querySelector('.quantity');
+            const quantity = parseInt(quantityInput.value, 10);
+            if (quantity > 0) {
+                const price = parseFloat(row.querySelector('[data-price]').getAttribute('data-price'));
+                const id = row.getAttribute('data-id');
+                let itemIndex = cart.findIndex(item => item.id === id);
+                if (itemIndex === -1) {
+                    cart.push({ price: price, quantity: quantity, id: id });
+                } else {
+                    cart[itemIndex].quantity += quantity;
+                }
+            }
+        });
+        updateCart();
+    });
+
+    document.getElementById('submit-cart').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        if (cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+        }
+
+        let cartData = cart.map((item, index) => {
+            return {
+                id: item.id,
+                price: parseFloat(item.price),
+                quantity: parseInt(item.quantity, 10)
+            };
+        }).filter(item => item !== null); 
+
+        if (cartData.length === 0) {
+            alert('Invalid cart items. Please check your cart.');
+            return;
+        }
+
+        document.getElementById('cart-data').value = JSON.stringify(cartData);
+
+        document.getElementById('order-form').submit();
+    });
+
+    const images = document.querySelectorAll('img');
+    const imgZoomContainer = document.createElement('div');
+    imgZoomContainer.className = 'img-zoom-container';
+    const imgZoomOverlay = document.createElement('div');
+    imgZoomOverlay.className = 'img-zoom-overlay';
+    const zoomImg = document.createElement('img');
+    imgZoomOverlay.appendChild(zoomImg);
+    imgZoomContainer.appendChild(imgZoomOverlay);
+    document.body.appendChild(imgZoomContainer);
+
+    images.forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.onclick = function() {
+            const imgSrc = this.src;
+            zoomImg.src = imgSrc;
+            imgZoomOverlay.style.display = 'flex';
+        };
+    });
+
+    imgZoomOverlay.onclick = function() {
+        this.style.display = 'none';
+    };
+});
+</script>
+</body>
+</html>

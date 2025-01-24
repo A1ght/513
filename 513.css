@@ -1,0 +1,573 @@
+/* Tiga   Zhugejia */
+html, body {
+    height: 100%;
+    width: 100%; /* 设置宽度为 100% */
+    margin: 0;
+    overflow-x: hidden; /* 防止水平滚动 */
+}
+
+body {
+    margin: 0;
+    font-family: 'Times New Roman', serif; /* 修改字体 */
+    color: #000000; /* 修改默认文本颜色 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 导航栏样式 */
+header {
+    position: fixed; /* 修改为固定定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #0022ff; /* 修改背景颜色 */
+    color: #fff;
+    display: flex;
+    justify-content: space-between; /* 修改为 space-between */
+    align-items: center;
+    padding: 15px 25px; /* 修改内边距 */
+}
+
+#logo {
+    max-width: 80px; /* 修改最大宽度 */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center; /* 居中对齐 .nav-buttons */
+    flex-grow: 1; /* 占据剩余空间 */
+}
+
+.nav-buttons {
+    display: flex;
+    flex-wrap: nowrap; /* 确保按钮在一行显示 */
+    gap: 15px; /* 按钮之间的间距 */
+}
+
+.user-info {
+    display: flex;
+    gap: 15px; /* 修改间距 */
+    align-items: center;
+    margin-left: auto; /* 将 user-info 推到最右边 */
+    padding-right: 25px;
+}
+
+.user-info form button {
+    color: #fff;
+    background: #ff4d4d; /* 修改背景颜色为红色 */
+    border: 1px solid #ff4d4d; /* 修改边框颜色为红色 */
+    border-radius: 8px; /* 修改圆角 */
+    padding: 8px 15px; /* 修改内边距 */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+.user-info form button:hover {
+    background: #e03c3c; /* 悬停时的背景颜色 */
+}
+
+.nav-button {
+    color: #000000;
+    text-decoration: none;
+    padding: 12px 25px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.nav-button:hover {
+    background-color: #1e3b71;
+    opacity: 0.9;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .nav-buttons,
+    .user-info {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav-buttons a,
+    .nav-buttons form,
+    .user-info {
+        flex: 1;
+    }
+}
+
+.background-image, .about-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    display: block; /* 修改为块级显示 */
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%; /* 调整为 50% */
+    left: 50%; /* 调整为 50% */
+    transform: translate(-50%, -50%); /* 调整为 translate(-50%, -50%) */
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 24px; /* 或者使用em单位: font-size: 1.5em; */
+    color: #333333;
+}
+
+.hero-logo {
+    max-width: 150px; /* 修改最大宽度 */
+    margin-bottom: 0px; /* 修改间距 */
+}
+
+footer {
+    background-color: #f5f100;
+    color: #000000;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.aboutus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px; /* 修改间距 */
+    padding: 30px;
+    max-width: 1000px; /* 修改最大宽度 */
+    margin: 0 auto;
+}
+
+.title-large {
+    font-size: 2.5em; /* 修改字体大小 */
+    color: #3c00ff;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* 修改对齐方式 */
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: 0;
+}
+
+.about-image {
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-text {
+    text-align: left;
+    max-width: calc(100% - 370px); /* 修改最大宽度 */
+}
+
+.career-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* 修改对齐方式 */
+    padding: 30px;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%; /* 修改宽度 */
+    padding-left: 30px;
+}
+
+.info-container section {
+    margin-bottom: 30px;
+}
+
+.info-container h3 {
+    font-size: 1.8em; /* 修改字体大小 */
+    color: #22711E;
+    margin-bottom: 15px;
+}
+
+.info-container p {
+    text-align: left;
+    line-height: 1.8; /* 修改行高 */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%; /* 修改宽度 */
+    margin: auto;
+    padding: 30px;
+    border: 2px solid #bbb; /* 修改边框样式 */
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.form-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 居中对齐内容 */
+    margin-bottom: 15px;
+    width: 100%; /* 使 div 宽度占满容器 */
+}
+
+.form-container label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    width: 100%; /* 使标签宽度与输入框一致 */
+    text-align: center; /* 标签文字居中 */
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"],
+.form-container input[type="date"],
+.form-container input[type="number"] {
+    padding: 10px;
+    border: 2px solid #bbb;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    width: 100%; /* 输入框宽度占满容器 */
+}
+
+.form-container button {
+    padding: 12px 20px;
+    background-color: #22711E;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.error-message {
+    color: rgb(236, 236, 236);
+    margin-bottom: 15px;
+}
+
+.support-dialogue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.support-dialogue form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.support-dialogue .form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.support-dialogue input[type="text"],
+.support-dialogue input[type="email"],
+.support-dialogue textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #bbb;
+    border-radius: 6px;
+}
+
+.support-dialogue button[type="submit"] {
+    background-color: #22711E;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%; /* 按钮宽度占满容器 */
+    margin-top: 15px; /* 顶部外边距 */
+}
+
+.support-dialogue button[type="submit"]:hover {
+    background-color: #1f5e1b; /* 悬停时的背景颜色 */
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    margin-top: 90px; /* 导航栏的高度 */
+}
+
+.product-table th {
+    border: 2px solid #bbb;
+    padding: 12px;
+    text-align: left;
+    background-color: #e2e2e2;
+}
+
+.product-table td {
+    border: 2px solid #bbb;
+    padding: 12px;
+    text-align: left;
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.product-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+#cart-items div {
+    margin-bottom: 15px;
+}
+
+main {
+    flex: 1;
+    margin-top: 90px; /* 修改顶部外边距 */
+    width: 100%;
+    padding: 0 30px; /* 修改左右内边距 */
+}
+
+.shopping-cart {
+    margin: 30px;
+    padding: 15px;
+    border: 2px solid #bbb;
+    background-color: #9178ff; /* 修改背景颜色 */
+    width: 350px; /* 修改宽度 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 220px;
+}
+
+#checkout {
+    background-color: rgb(73, 73, 73); /* 修改背景颜色 */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#clear-cart {
+    background-color: #00f; /* 修改背景颜色 */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+#submit-cart {
+    color: #fff;
+    background-color: #5CAF70; /* 修改背景颜色 */
+    padding: 12px 20px;
+    font-size: 18px; /* 修改字体大小 */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 30px auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#submit-cart:hover {
+    background-color: #45a059; /* 修改悬停背景颜色 */
+}
+#checkout:hover, #clear-cart:hover, #submit-cart:hover {
+    opacity: 0.9;
+}
+
+.img-zoom-container {
+    position: relative;
+}
+
+.img-zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+
+.img-zoom-overlay img {
+    max-width: 80%; /* 修改最大宽度 */
+    max-height: 80%; /* 修改最大高度 */
+    border: 8px solid #fff; /* 修改边框宽度 */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px; /* 修改底部外边距 */
+}
+
+.go-button {
+    background-color: #1e00ff; /* 修改背景颜色 */
+    color: #000000;
+    padding: 20px 40px; /* 修改内边距 */
+    text-decoration: none;
+    border-radius: 60px; /* 修改圆角 */
+    font-weight: bold;
+    display: block;
+    margin: 30px auto 0 auto; /* 修改外边距 */
+    margin-left: -20px; /* 修改左边外边距 */
+}
+
+.go-button:hover {
+    background-color: #1e3b71;
+    opacity: 0.9;
+}
+
+.nav-title {
+    font-size: 2em; /* 修改字体大小 */
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 0; /* 修改内边距 */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main.success-main {
+    margin-top: 90px;
+}
+
+.support-page {
+    background-image: url('history.jpg'); /* 修改背景图片 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.welcome-message {
+    background-color: #e7e7e7; /* 修改背景颜色 */
+    color: #22711E;
+    font-size: 1.5em; /* 修改字体大小 */
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 0;
+    margin: 30px 0;
+    border-radius: 10px; /* 修改圆角 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.alert-success {
+    background-color: #e7e7e7;
+    color: #22711E;
+    font-size: 1.2em; /* 修改字体大小 */
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 12px; /* 修改圆角 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.support-dialogue form {
+    background-color: #f0f0f0;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.support-dialogue input[type="text"],
+.support-dialogue input[type="email"],
+.support-dialogue textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #bbb;
+    border-radius: 6px;
+}
+
+.support-dialogue button[type="submit"] {
+    background-color: #22711E;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.support-dialogue button[type="submit"]:hover {
+    background-color: #1f5e1b;
+}
+
+.index-body {
+    background-image: url('background.jpg'); /* 修改背景图片 */
+    background-size: cover;
+    background-position: top; /* 修改背景位置 */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.view-button {
+    margin-top: 30px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    width: max-content;
+}
+
+.login-button {
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 40px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #1e3b71;
+    opacity: 0.9;
+}
+
+#add-all-to-cart {
+    background-color: #5CAF70; /* 修改背景颜色 */
+    color: #fff;
+    padding: 20px 30px;
+    font-size: 18px; /* 修改字体大小 */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 30px auto;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#add-all-to-cart:hover {
+    background-color: #45a059; /* 修改悬停背景颜色 */
+}
